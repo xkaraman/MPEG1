@@ -32,8 +32,6 @@ b(:,:,4) = pic.y( yi+9:yi+16 ,xi+9:xi+16 );
 b(:,:,5) = pic.cb( yi/2+1:yi+8 ,xi/2+1:xi/2+8 );
 b(:,:,6) = pic.cr( yi/2+1:yi+8 ,xi/2+1:xi/2+8 );
 
-
-
 % Encode it's 6 blocks, 4 Luma 2 Chroma
 blocks = struct( 'VLCodes', [] );
 
