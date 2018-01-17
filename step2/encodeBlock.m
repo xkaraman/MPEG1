@@ -1,4 +1,4 @@
-function [ VLCodes ] = encodeBlock( blockMatrix, mBType, qscale )
+function [ BlockEntity ] = encodeBlock( blockMatrix, mBType, qscale )
 %UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
 % Define quantization tables for quantizeI and quantizePB functions with
@@ -27,7 +27,7 @@ end
 % Run/Level Zig-Zag Scanning
 symbols=runLength(c);
 % Encode them using Variable Length Code defaults by MPEG1 standard
-VLCodes=vlc(symbols);
+BlockEntity.VLCodes=vlc(symbols);
 % writeVLC();
 end
 

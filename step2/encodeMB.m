@@ -1,22 +1,45 @@
-function [ MotionVectors,BlockEntityArray ] = encodeMB( pic, picType,qScale, mbIndex )
+function [ MotionVectors, BlockEntityArray ] = encodeMB( pic, picType,qScale, mbIndex )
 %UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
 
 % Encode according to Frame/Macroblock Type
 switch (picType)
     case 'P'
-        motEstP()
+        mv = motEstP();
         %encodeMV()
     case 'I'
-        motEstB()
+        mv = motEstB();
         %encodeMV()
 end
+% Get Macroblock matrices according to its mbIndex
+
+xi = mod( mbIndex * 16, 352);
+%if ( floor( mbIndex * 16 / 352) > 0 )
+yi = floor( mbIndex * 16 / 352) * 16;
+%else
+%   yi = 0;
+%end
+
+b = zeros([8, 8, 6]);
+
+% Four lum blocks
+b(:,:,1) = pic.y( yi+1:yi+8 ,xi+1:xi+8 );
+b(:,:,2) = pic.y( yi+1:yi+8 ,xi+9:xi+16 );
+b(:,:,3) = pic.y( yi+9:yi+16 ,xi+1:xi+8 );
+b(:,:,4) = pic.y( yi+9:yi+16 ,xi+9:xi+16 );
+
+% Two chroma blocks
+b(:,:,5) = pic.cb( yi/2+1:yi+8 ,xi/2+1:xi/2+8 );
+b(:,:,6) = pic.cr( yi/2+1:yi+8 ,xi/2+1:xi/2+8 );
+
+
 
 % Encode it's 6 blocks, 4 Luma 2 Chroma
-blocks = zeros(6,1);
-for bindex=1:6
-    blocks(bindex) = encodeBlock(,picType,qScale);
-end
+blocks = struct( 'VLCodes', [] );
 
+for bindex=1:6
+    blocks(bindex) = encodeBlock( b(:,:,bindex), picType, qScale );
+end
+BlockEntityArray = blocks;
 end
 
