@@ -15,10 +15,16 @@ while(true)
     end
     i = i +1;
 end
-%   genSeqHeader
+   genSeqHeader(images{1})
 %   writeSeqHeader
 %   encodeSeq
 %   writeSeqEnd
 
 end
 
+function genSeqHeader(x)
+    SeqHeader = struct('sequence_header_code',[],'horizontal_size',[],'vertical_size',[]);
+    SeqHeader.sequence_header_code =  dec2bin( hex2dec('000001B3') );
+    SeqHeader.horizontal_size = dec2bin( size(x,2) );
+    SeqHeader.vertical_size = dec2bin( size(x,1) );
+end
