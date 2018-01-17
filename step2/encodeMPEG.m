@@ -15,6 +15,7 @@ while(true)
     end
     i = i +1;
 end
+
    genSeqHeader(images{1})
 %   writeSeqHeader
 %   encodeSeq
