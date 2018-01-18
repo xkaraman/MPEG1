@@ -47,6 +47,7 @@ for bindex=1:6
     blocks(bindex) = encodeBlock( b(:,:,bindex), picType, qScale );
 end
 BlockEntityArray = blocks;
+%% TODO Motion Vectors
 MotionVectors=[1 2;3 4];
 end
 
