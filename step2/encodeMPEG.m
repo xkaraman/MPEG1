@@ -25,7 +25,7 @@ end
 
 function genSeqHeader(x)
     SeqHeader = struct('sequence_header_code',[],'horizontal_size',[],'vertical_size',[]);
-    SeqHeader.sequence_header_code =  dec2bin( hex2dec('000001B3') );
+    SeqHeader.sequence_header_code =  dec2bin( uint32( hex2dec('000001B3') ) ) + '0';
     SeqHeader.horizontal_size = dec2bin( size(x,2) );
     SeqHeader.vertical_size = dec2bin( size(x,1) );
 end
