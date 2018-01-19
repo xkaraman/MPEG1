@@ -10,6 +10,7 @@ function [ MBEntityArray ] = encodePicSlice( pic, picType, qScale )
 %  MBEntityArray
 
     mb = struct('MBHeader',[],'MotionVectors',[],'BlockEntityArray',[]);
+    
 for mbindex = 1:( size(pic.frameY,1) / 16 )* ( size(pic.frameY,2) / 16 )
     mb(mbindex).MBHeader = genMBheader(picType,qScale); 
 %     writeMBheader()
@@ -24,11 +25,11 @@ end
 
 function h = genMBheader(type,scale)
     if type == 'I'
-    h.macroblock_type = dec2bin(1);
+    h.macroblock_type = dec2bin(1,3);
     elseif type == 'P'
-        h.macroblock_type = dec2bin(2);
+        h.macroblock_type = dec2bin(2,3);
     else
-        h.macroblock_type = dec2bin(3);
+        h.macroblock_type = dec2bin(3,3);
     end
-    h.quantizer_scale = dec2bin(scale); 
+    h.quantizer_scale = dec2bin(scale,5); 
 end

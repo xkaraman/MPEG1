@@ -1,7 +1,17 @@
 function [mBY, mBCr, mBCb] = iMotEstB(eMBY, eMBCr, eMBCb, mBIndex, mV, backwFrameY, backwFrameCr, backwFrameCb, ...
-forwFrameY, forwFrameCr, forwFrameCb)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+                                    forwFrameY, forwFrameCr, forwFrameCb)
+%% Inverse of Motion Estimation for B-frames
+%   Inputs:
+%   eMBxx: prediction errors (y,Cr,Cb)
+%   mbIndex:marcoblock index number
+%   mV: motion Vectors
+%       second column is NaN due to no reference in future frame
+%   backwFramexx: reference Y,Cr,Cb components
+%   forwFramexx: reference Y,Cr,Cb components
+%  
+%   Outputs:
+%   mBxx: macroblock Y,Cb,Cr componets
+%%
 x_shift_b=mV(1,1);  %value of shifting the reference frame using motion Vector
 y_shift_b=mV(2,1);
 x_shift_f=mV(1,2); 

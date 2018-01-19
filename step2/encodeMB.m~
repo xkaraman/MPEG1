@@ -46,14 +46,14 @@ end
 b = zeros([8, 8, 6]);
 
 % Four lum blocks
-b(:,:,1) = errY( 1:8 , 1:8 );
-b(:,:,2) = errY( 1:8 , 9:16 );
-b(:,:,3) = errY( 9:16 , 1:8 );
-b(:,:,4) = errY( 9:16 , 9:16 );
+b(:,:,1) = errY( 1:8 ,1:x8 );
+b(:,:,2) = errY( 1:8 ,9:16 );
+b(:,:,3) = errY( 9:16 ,1:8 );
+b(:,:,4) = errY( 9:16 ,9:16 );
 
 % Two chroma blocks
-b(:,:,5) = errCb( 1:8 ,1:8 );
-b(:,:,6) = errCr( 1:8 ,1:8 );
+b(:,:,5) = pic.frameCb( yi/2+1:yi/2+8 ,xi/2+1:xi/2+8 );
+b(:,:,6) = errCr(1:yi/2+8 ,xi/2+1:xi/2+8 );
 
 % Encode it's 6 blocks, 4 Luma 2 Chroma
 blocks = struct( 'VLCodes', [] );
@@ -62,6 +62,6 @@ for bindex=1:6
     blocks(bindex) = encodeBlock( b(:,:,bindex), picType, qScale );
 end
 BlockEntityArray = blocks;
-MotionVectors = mv;
+MotionVectors= mv;
 end
 

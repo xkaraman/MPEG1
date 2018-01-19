@@ -1,6 +1,4 @@
 function [ BlockEntity ] = encodeBlock( blockMatrix, mBType, qscale )
-%UNTITLED4 Summary of this function goes here
-%   Detailed explanation goes here
 % Define quantization tables for quantizeI and quantizePB functions with
 % default of MPEG standard
 

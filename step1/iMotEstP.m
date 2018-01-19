@@ -1,12 +1,13 @@
 function [mBY, mBCr, mBCb] = iMotEstP(eMBY, eMBCr, eMBCb, mBIndex, mV,refFrameY, refFrameCr, refFrameCb)
 %% Inverse of Motion Estimation for P-frames
 %   Inputs:
-%   mbIndex:marcoblock index number
-%   refxx: reference Y,Cb,Cr components
 %   eMBxx: prediction errors
+%   mbIndex:marcoblock index number
 %   mV: motion Vectors
 %       second column is NaN due to no reference in future frame
-%
+%   refxx: reference Y,Cb,Cr components
+%   
+%  
 %   Outputs:
 %   mBxx: macroblock Y,Cb,Cr componets
 

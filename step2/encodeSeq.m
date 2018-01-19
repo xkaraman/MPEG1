@@ -18,9 +18,8 @@ function GoPEntityArray = encodeSeq(bName, fExtension, startFrame, GoP, numOfGoP
 %           PicSliceEntity
 
 % GoPHeader group_start_code 32 bslbf
-i=1;
 frameNumber=startFrame;
-GoPHeader='0000 0000 0000 0000 0000 0001 1011 1000';
+GoPHeader= dec2bin( hex2dec('1B8'), 32);
 % GoPEntityArray.GoPHeader=GoPHeader;
  for gop = 1:numOfGoPs
 [t, PicSliceEntityArray] = encodeGoP(frameNumber, bName, fExtension, startFrame, GoP, qScale);

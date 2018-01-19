@@ -10,7 +10,7 @@ function SeqEntity = encodeMPEG(bName, fExtension, startFrame, GoP, numOfGoPs, q
 %             vertical_size 12 uimsbf
 %   SeqEnd sequence_end_code 32 bslbf
 
-seq_header = dec2bin( hex2dec('000001B3'),32);
+seq_header = dec2bin( hex2dec())'0000 0000 0000 0000 0000 0001 1011 0011';
 vertical = dec2bin(720,12); 
 horizontal = dec2bin(584,12);
 
@@ -20,7 +20,7 @@ SeqHeader = struct('sequence_header_code',seq_header,...
 
 GoPEntityArray = encodeSeq(bName, fExtension, startFrame, GoP, numOfGoPs, qScale);
 
-seq_end = dec2bin( hex2dec('000001B7'),32);
+seq_end = '0000 0000 0000 0000 0000 0001 1011 0111';
 
 % how to save it
 SeqEntity = struct('SeqHeader',SeqHeader,...

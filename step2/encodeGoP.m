@@ -39,22 +39,24 @@ for picIndex = 1:sizeOfGoP
         return
     end
     % ---Generate headers for picture and slice----
-    picture_start_code='0000 0000 0000 0000 0000 0001 0000 0000';
+    picture_start_code=dec2bin( hex2dec('100'), 32); 
     % first picture = 0 and so on;
-    temporal_reference=tempRef; 
+    temporal_reference=dec2bin(tempRef,10); 
     current_coding_type=picType;
     
     switch current_coding_type
         case 'I'
-            picture_coding_type=1;
+            picture_coding_type='001';
         case 'P'
-            picture_coding_type=2;
+            picture_coding_type='010';
         case 'B'
-            picture_coding_type=3;
+            picture_coding_type='011';
     end
     
-    slice_start_code='0000 0000 0000 0000 0000 0001 0000 0001 '; % Efoson kodikopioume panta me to idio q tote den exei noima na exume polla slices. ena slice exei ola ta MB tis ikonas
-    quantizer_scale=qScale ;
+    slice_start_code=dec2bin( hex2dec('101'), 32) ;
+    % Efoson kodikopioume panta me to idio q tote den exei noima na exume polla slices. 
+%     ena slice exei ola ta MB tis ikonas
+    quantizer_scale=dec2bin(qScale,5) ;
     
     % ---Generate headers for picture and slice----
     PicSliceEntityArray(picIndex).PicSliceHeader=struct('picture_start_code',picture_start_code,...

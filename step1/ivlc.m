@@ -24,16 +24,16 @@ d15bPos=strcat(d15b(1:end-1),'0') %den xriazomaste to EOB, the last element
 for i=1:(elements-1)
 
     
-   I = find(strcmp(d15bPos,vlcStream(i)));  %vrisko index
+   I = find(strcmp(d15bPos,vlcStream(i)));  %vrisko index gia thetikous
    if not(isempty(I))%ean vrethike
    runSymbols(i,1)=d15aPos(I,1);
    runSymbols(i,2)=d15aPos(I,2);
    end    
    
-   D = find(strcmp(d15bPos,vlcStream(i)));  %vrisko index
+   D = find(strcmp(d15bNeg,vlcStream(i)));  %vrisko index gia arnitikous
    if not(isempty(D))%ean vrethike
-   runSymbols(i,1)=d15aPos(D,1);
-   runSymbols(i,2)=d15aPos(D,2);
+   runSymbols(i,1)=d15aNeg(D,1);
+   runSymbols(i,2)=d15aNeg(D,2);
    end 
    
    
@@ -59,7 +59,7 @@ for i=1:(elements-1)
        
    
 end
-runSymbols
+runSymbols;
 
 end
 
