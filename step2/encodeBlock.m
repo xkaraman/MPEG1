@@ -21,7 +21,7 @@ if(mBType == 'I')
     c=quantizeI(C,q,qscale);
 else
     q=qPB;
-    c=quantizePB(C,q,scale);
+    c=quantizePB(C,q,qscale);
 end
 
 % Run/Level Zig-Zag Scanning

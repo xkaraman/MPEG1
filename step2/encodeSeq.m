@@ -21,18 +21,19 @@ function GoPEntityArray = encodeSeq(bName, fExtension, startFrame, GoP, numOfGoP
 i=1;
 frameNumber=startFrame;
 GoPHeader='0000 0000 0000 0000 0000 0001 1011 1000';
-GoPEntityArray.GoPHeader=GoPHeader;
+% GoPEntityArray.GoPHeader=GoPHeader;
  for gop = 1:numOfGoPs
 [t, PicSliceEntityArray] = encodeGoP(frameNumber, bName, fExtension, startFrame, GoP, qScale);
 if t==0
     break;% Unexpected end of GoP found, assuming end of sequence
 end
 frameNumber=frameNumber+size(GoP,2);% gia kathe epomeno Gop to proto frame tha ine metatopismeno kata to size tou Gop
-PicSliceEntityArrays(gop) = PicSliceEntityArray;
+GoPEntityArray(gop).GoPHeader=GoPHeader;
+GoPEntityArray(gop).PicSliceEntityArray = PicSliceEntityArray;
 
  end
  
- GoPEntityArray.PicSliceEntityArray=PicSliceEntityArrays;
+%  GoPEntityArray.PicSliceEntityArray=PicSliceEntityArrays;
  
 end
 

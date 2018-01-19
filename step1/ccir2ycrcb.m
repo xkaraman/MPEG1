@@ -27,8 +27,8 @@ temp=bsxfun(@plus, temp, const);
 YCBCR=uint8(reshape(temp',[c r d]));
 
 % Display
-figure
-imshow(YCBCR)
+% figure
+% imshow(YCBCR)
 
 %% SubSample 4:2:0
 

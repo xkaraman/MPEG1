@@ -1,4 +1,4 @@
-function encodeMPEG(bName, fExtension, startFrame, GoP, numOfGoPs, qScale)
+function SeqEntity = encodeMPEG(bName, fExtension, startFrame, GoP, numOfGoPs, qScale)
 
 % genSeqHeader % Generate the header of the sequence
 % 3 writeSeqHeader

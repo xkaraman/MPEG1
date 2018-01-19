@@ -28,6 +28,7 @@ function [t, PicSliceEntityArray] = encodeGoP(frameNumber, bName,...
 startFrame=frameNumber; 
 
 sizeOfGoP = size(GoP,2);
+picslice=struct('PicSliceHeader',[],'MBEntityArray',[]);
 for picIndex = 1:sizeOfGoP
      % Get next picture
     [pic, picType, tempRef] = getNextPicture(bName, fExtension, frameNumber,... 
@@ -35,6 +36,7 @@ for picIndex = 1:sizeOfGoP
     
     if isempty(pic)
         t=0;% No picture found
+        return
     end
     % ---Generate headers for picture and slice----
     picture_start_code='0000 0000 0000 0000 0000 0001 0000 0000';
@@ -55,26 +57,26 @@ for picIndex = 1:sizeOfGoP
     quantizer_scale=qScale ;
     
     % ---Generate headers for picture and slice----
-    PicSliceHeader=struct('picture_start_code',picture_start_code,...
+    PicSliceEntityArray(picIndex).PicSliceHeader=struct('picture_start_code',picture_start_code,...
                           'temporal_reference',temporal_reference,...
                           'current_coding_type',current_coding_type,...
                           'picture_coding_type',picture_coding_type,...
                           'slice_start_code',slice_start_code,...
                           'quantizer_scale',quantizer_scale);
+        
+    PicSliceEntityArray(picIndex).MBEntityArray = encodePicSlice(pic, picType, qScale);
     
-    
-    MBEntityArray(picIndex) = encodePicSlice(pic, picType, qScale);
-    if picType == I || P
-        decPic = decodePicSlice(MBEntityArray);
+    if picType == 'I' || picType == 'P'
+%         decPic = decodePicSlice(MBEntityArray);
         % Save to picture buffer for future reference
-        pushPic(pic); 
-    end
+        pushPic( pic ); 
+     end
     
     frameNumber=frameNumber+1;
 end
-
-PicSliceEntityArray.PicSliceHeader=PicSliceHeader;
-PicSliceEntityArray.MBEntityArray=MBEntityArray;
+t=1;
+% PicSliceEntityArray.PicSliceHeader=PicSliceHeader;
+% PicSliceEntityArray.MBEntityArray=MBEntityArray;
 
 
 end

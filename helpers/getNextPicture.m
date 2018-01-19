@@ -3,8 +3,6 @@ startFrame, GoP)
 %frameNumber= trexon thesi sto GoP (integer)
 %startFrame=  arxi tou gop(integer)
 
-sizeofGop=size(GoP,2);
-
 if frameNumber==startFrame
     picType='I';
     picture_name=sprintf('%s%03d.%s', bName,startFrame,fExtension);
@@ -13,15 +11,16 @@ else
    [sort] = sortGoP(GoP);% sorting function according to the priority of encoding
     tempRef=frameNumber-startFrame+1;%finding current tempRef
     Current_Index=find(sort==tempRef);%find current frame in sort list
-    tempRef=sort(Current_Index+1);%find next frame to be encoded
+    tempRef=sort(Current_Index);%find next frame to be encoded
     picType=GoP(tempRef);
     picture_name=sprintf('%s%03d.%s',bName,(startFrame+tempRef-1),fExtension);
 end
 
-
-
-
-pics = imread(picture_name);
+imgname = fullfile('../src/',picture_name);
+if ( exist( imgname ,'file') == 2)
+    pics = imread(imgname);
+end
+% pics = imread(picture_name);
 [pic.frameY, pic.frameCr, pic.frameCb] = ccir2ycrcb(pics);
 
 %decPic.frameY, decPic.frameCr, decPic.frameCb
