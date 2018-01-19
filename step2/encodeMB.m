@@ -8,6 +8,7 @@ function [ MotionVectors, BlockEntityArray ] = encodeMB( pic, picType, qScale, m
 %   Output:
 %   MotionVectors
 %   BlockEntityArray
+
 global buf;
 
 % Encode according to Frame/Macroblock Type
@@ -28,11 +29,7 @@ end
 % Get Macroblock matrices according to its mbIndex
 
 xi = mod( mbIndex * 16, size(pic.frameY,2) );
-%if ( floor( mbIndex * 16 / 352) > 0 )
 yi = floor( mbIndex * 16 / size(pic.frameY,2) ) * 16;
-%else
-%   yi = 0;
-%end
 
 b = zeros([8, 8, 6]);
 
@@ -53,7 +50,6 @@ for bindex=1:6
     blocks(bindex) = encodeBlock( b(:,:,bindex), picType, qScale );
 end
 BlockEntityArray = blocks;
-%% TODO Motion Vectors
-MotionVectors=mv;
+MotionVectors= mv;
 end
 

@@ -25,7 +25,7 @@ seq_end = '0000 0000 0000 0000 0000 0001 1011 0111';
 % how to save it
 SeqEntity = struct('SeqHeader',SeqHeader,...
                    'GoPEntityArray',GoPEntityArray,...
-                   'Seq_End',seq_end );
+                   'SeqEnd',seq_end );
 
 end
 
