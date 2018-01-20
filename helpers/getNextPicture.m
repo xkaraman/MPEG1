@@ -9,10 +9,10 @@ if frameNumber==startFrame
     tempRef=1;
 else
    [sort] = sortGoP(GoP);% sorting function according to the priority of encoding
-    tempRef=frameNumber-startFrame+1;%finding current tempRef
-    Current_Index=find(sort==tempRef);%find current frame in sort list
-    tempRef=sort(Current_Index);%find next frame to be encoded
-    picType=GoP(tempRef);
+    new_order=GoP(sort);
+    element=frameNumber-startFrame+1;
+tempRef=sort(element);
+picType=new_order(element);
     picture_name=sprintf('%s%03d.%s',bName,(startFrame+tempRef-1),fExtension);
 end
 

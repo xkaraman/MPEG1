@@ -27,10 +27,10 @@ temp = ycbcrrgb * double(temp');
 
 % Reshape back to original
 frameRGB=uint8(reshape(temp',[c r d]));
-    
+
 % Display
 %figure
-imshow(frameRGB);
+% imshow(frameRGB);
 
 end
 

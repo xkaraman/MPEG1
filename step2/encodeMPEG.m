@@ -27,5 +27,6 @@ SeqEntity = struct('SeqHeader',SeqHeader,...
                    'GoPEntityArray',GoPEntityArray,...
                    'SeqEnd',seq_end );
 
+save('encoded.mat','SeqEntity');
 end
 

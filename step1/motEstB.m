@@ -84,7 +84,7 @@ eMBCb=(0.5)*(best_mBCb_backw+best_mBCb_forw)-mBCb1;
 eMBCr=(0.5)*(best_mBCr_backw+best_mBCr_forw)-mBCr1;
 
 
-figure;
+% figure;
 
 x=uint8(mBY1);
 

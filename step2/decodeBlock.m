@@ -9,23 +9,23 @@ function decBlock = decodeBlock(encBlock, mBType,qScale)
 
 persistent dqI dqPB;
 
-if isempty(qI)
+if isempty(dqI)
     dqI = qintra;
     dqPB = qinter;
 end
 
 c = encBlock.VLCodes; % Read VL Coded block from file
 
-c = iVLC(c); % Decode VLC
+c = ivlc(c); % Decode VLC
 
 c = iRunLength(c);
 
-if mBType == 1
+if strcmp(mBType,'001')
     qTable = dqI;
-    dct = dequantizeI(c, qTable, qScale);
+    dct = dequantizeI(c, qTable, bin2dec( qScale) );
 else
     qTable = dqPB;
-    dct = dequantizePB(c, qTable, qScale);
+    dct = dequantizePB(c, qTable, bin2dec(qScale) );
 end
 
 decBlock = iBlockDCT(dct);

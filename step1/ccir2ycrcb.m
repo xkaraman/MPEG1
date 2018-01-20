@@ -34,8 +34,8 @@ YCBCR=uint8(reshape(temp',[c r d]));
 
 % Y, Cb & CR , Fir Filter
 
-u=ceil([-29 0 88 138 88 0 -29] / 256);    %fir filter for Y
-v=ceil([1 3 3 1] /8);                     %fir filter for CB CR
+u=[-29 0 88 138 88 0 -29] / 256;    %fir filter for Y
+v=[1 3 3 1] /8;                     %fir filter for CB CR
 
 % Y SubSampling
 %--------------
@@ -78,8 +78,8 @@ temp = temp(1:2:end,:);
 frameCr=double(temp);
 
 
-frameY=frameY(:,1+4:1:end-4);   %Deleting 4 side-left & 4 side-right columns
-frameCr=frameCr(:,1+2:end-2);   %Deleting 2 side-left & 2 side-right columns
-frameCb=frameCb(:,1+2:end-2);   %Deleting 2 side-left & 2 side-right columns
+frameY=uint8(frameY(:,1+4:1:end-4));   %Deleting 4 side-left & 4 side-right columns
+frameCr=uint8(frameCr(:,1+2:end-2));   %Deleting 2 side-left & 2 side-right columns
+frameCb=uint8(frameCb(:,1+2:end-2));   %Deleting 2 side-left & 2 side-right columns
 end
 

@@ -12,8 +12,9 @@ function [mBY, mBCr, mBCb] = iMotEstP(eMBY, eMBCr, eMBCb, mBIndex, mV,refFrameY,
 %   mBxx: macroblock Y,Cb,Cr componets
 
 %% Inverse Motion
-% value of shifting the reference frame using motion Vectorx_shift=mV(1,1); 
+% value of shifting the reference frame using motion Vector 
 y_shift=mV(2,1);
+x_shift=mV(1,1);
 x_FrameY=mod(mBIndex,22)*16+1;%starting pixels
 y_FrameY=floor(mBIndex/22)*16+1;
 x_FrameCr=mod(mBIndex,22)*8+1;

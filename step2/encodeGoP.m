@@ -28,7 +28,7 @@ function [t, PicSliceEntityArray] = encodeGoP(frameNumber, bName,...
 startFrame=frameNumber; 
 
 sizeOfGoP = size(GoP,2);
-picslice=struct('PicSliceHeader',[],'MBEntityArray',[]);
+% picslice=struct('PicSliceHeader',[],'MBEntityArray',[]);
 for picIndex = 1:sizeOfGoP
      % Get next picture
     [pic, picType, tempRef] = getNextPicture(bName, fExtension, frameNumber,... 
@@ -69,9 +69,9 @@ for picIndex = 1:sizeOfGoP
     PicSliceEntityArray(picIndex).MBEntityArray = encodePicSlice(pic, picType, qScale);
     
     if picType == 'I' || picType == 'P'
-%         decPic = decodePicSlice(MBEntityArray);
+        decPic = decodePicSlice( PicSliceEntityArray(picIndex).MBEntityArray );
         % Save to picture buffer for future reference
-        pushPic( pic ); 
+        pushPic( decPic ); 
      end
     
     frameNumber=frameNumber+1;

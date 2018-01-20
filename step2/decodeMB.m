@@ -14,37 +14,37 @@ function [decMBY,decMBCr,decMBCb] = decodeMB(BlockEntityArray, MotionVectors, ..
 
 global buf;
 
-if mBType == 2 || mBType ==  3 % Read motion vectors if necessary
+if ( strcmp( mBType,'010') )|| ( strcmp( mBType, '011') ) % Read motion vectors if necessary
     mv = MotionVectors;
     %     readMV
 end
 
-% x = zeros(1,6);
+x = zeros(8,8,6);
 for bIndex = 1:6
     %     readBHeader
-    x(bIndex) = decodeBlock(BlockEntityArray(bIndex),mBType, qScale);
+    x(:,:,bIndex) = decodeBlock(BlockEntityArray(bIndex),mBType, qScale);
 end
 
-erry = [x(1) x(2) ; x(3) x(4)];
-errcb = x(5);
-errcr = x(6);
+erry = [x(:,:,1) x(:,:,2) ; x(:,:,3) x(:,:,4)];
+errcb = x(:,:,5);
+errcr = x(:,:,6);
 switch (mBType)
-    case 2
-        [mbY, mbCr, mbCB] = imotestP(erry,errcr,errcb , mv,...
+    case '010'
+        [mbY, mbCr, mbCB] = iMotEstP(erry,errcr,errcb ,mBIndex, mv,...
             buf(1).frameY,buf(1).frameCr,buf(1).frameCb);
         
         decMBY = mbY;
         decMBCb = mbCr;
         decMBCr = mbCB;
-    case 3
-        [mbY, mbCr, mbCB] = imotestB(erry,errcr,errcb,mBIndex, mv,...
+    case '011'
+        [mbY, mbCr, mbCB] = iMotEstB(erry,errcr,errcb,mBIndex, mv,...
             buf(1).frameY,buf(1).frameCr,buf(1).frameCb,...
             buf(2).frameY,buf(2).frameCr,buf(2).frameCb);
         
         decMBY = mbY;
         decMBCb = mbCr;
         decMBCr = mbCB;
-    case 1
+    case '001'
         decMBY = erry;
         decMBCb = errcb;
         decMBCr = errcr;

@@ -50,13 +50,13 @@ estmBCb_f=double(estmBCb_f);%converting to double to substract error
 mBCb=(0.5)*(esmBCb+estmBCb_f)-eMBCr;
 mBCb = uint8(mBCb);
 
-figure;
-subplot(3,1,1);
-imshow(mBY);
-subplot(3,1,2);
-imshow(mBCb);
-subplot(3,1,3);
-imshow(mBCr);
+% figure;
+% subplot(3,1,1);
+% imshow(mBY);
+% subplot(3,1,2);
+% imshow(mBCb);
+% subplot(3,1,3);
+% imshow(mBCr);
 
 end
 

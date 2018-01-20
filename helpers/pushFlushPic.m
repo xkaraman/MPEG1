@@ -7,7 +7,10 @@ function pushFlushPic(pic, tempRef, outFName)
 % Used by decodeGoP to store image in disk.
 
 out = sprintf('%s%03d%s',outFName,tempRef,'.tiff');
-imwrite(uint8(pic),out);
+% rameY, frameCr, frameCb
+pix=ycrcb2ccir(pic.frameY,pic.frameCr,pic.frameCb);
+
+imwrite(uint8(pix),out);
 
 end
 

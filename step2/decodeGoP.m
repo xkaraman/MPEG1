@@ -2,7 +2,7 @@ function decodeGoP(PicSliceEntityArray, outFName)
 %UNTITLED7 Summary of this function goes here
 %   Detailed explanation goes here
 
-sizeOfoP=length(PicSliceEntityArray)
+sizeOfoP=length(PicSliceEntityArray);
 % function decodeGoP
 % 2 for picIndex = 1:sizeOfoP
 % 3 readPicSliceHeader
@@ -18,14 +18,14 @@ sizeOfoP=length(PicSliceEntityArray)
 
 for picIndex = 1:sizeOfoP
     dPic = decodePicSlice(PicSliceEntityArray(picIndex).MBEntityArray);
-    picType=PicSliceEntityArray(picIndex).PicSliceHeader.picture_coding_type
+    picType=PicSliceEntityArray(picIndex).PicSliceHeader.picture_coding_type;
     if isempty(dPic)
         return; % No picture found
     end
     pushFlushPic(dPic, picIndex, outFName);
     
-     picType=PicSliceEntityArray(picIndex).PicSliceHeader.picture_coding_type
-    if picType == '001' || picType == '010'   % if it is I or P frame
+     picType=PicSliceEntityArray(picIndex).PicSliceHeader.picture_coding_type;
+    if strcmp(picType,'001') || strcmp(picType,'010')   % if it is I or P frame
 %              % Save to picture buffer for future reference
         pushPic( dPic ); 
      end
