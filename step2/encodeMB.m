@@ -15,13 +15,13 @@ global buf;
 switch (picType)
     case 'P'
         [errY, errCr, errCb, mv] = motEstP(pic.frameY,pic.frameCr,pic.frameCb,mbIndex,...
-            buf(1).frameY,buf(1).frameCr,buf(1).frameCb);
+            buf{1}.frameY,buf{1}.frameCr,buf{1}.frameCb);
         %         encodeMV()
     case 'B'
         [errY, errCr, errCb, mv] = motEstB (pic.frameY,pic.frameCr,pic.frameCb,mbIndex,...
-            buf(1).frameY,buf(1).frameCr,buf(1).frameCb,...
-            buf(2).frameY,buf(2).frameCr,buf(2).frameCb);
-        %         encodeMV()
+            buf{1}.frameY,buf{1}.frameCr,buf{1}.frameCb,...
+            buf{2}.frameY,buf{2}.frameCr,buf{2}.frameCb);
+        %         encodeMV()]
     otherwise
         % Get Macroblock matrices according to its mbIndex
         

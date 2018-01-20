@@ -4,12 +4,12 @@ function pushPic(pic)
 global buf;
 
 if isempty(buf)
-    buf= pic;
+    buf{1} = pic;
 elseif length(buf) == 1
-    buf(2) = pic;
+    buf{2} = pic;
 else
-    buf(1) = buf(2);
-    buf(2) = pic;
+    buf{1} = buf{2};
+    buf{2} = pic;
 end
 
 

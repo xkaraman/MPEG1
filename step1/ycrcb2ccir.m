@@ -10,9 +10,9 @@ ycbcrrgb = [ 1.164  0.000  1.596;
              1.164  2.017  0.000 ];
 
 
-Y = imresize(frameY,[576 720],'bicubic') - 16 ;
-Cr = imresize(frameCr,[576 720],'bicubic') - 128 ;
-Cb = imresize(frameCb,[576 720],'bicubic') -128 ;
+Y = imresize(frameY-16,[576 720],'bicubic')  ;
+Cr = imresize(frameCr-128,[576 720],'bicubic')  ;
+Cb = imresize(frameCb-128,[576 720],'bicubic')  ;
 
 temp1=cat(3,Y,Cb,Cr);
 

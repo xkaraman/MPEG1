@@ -21,10 +21,10 @@ temp = reshape(frameRGB , c*r , 3 );
 % Conversion
 temp = rgbycbcr * double(temp');
 % Add a column vector to Matrix's Columns
-temp=bsxfun(@plus, temp, const);
+temp = bsxfun(@plus, temp, const);
 
 % Reshape back to original
-YCBCR=uint8(reshape(temp',[c r d]));
+YCBCR = uint8(reshape(temp',[c r d]));
 
 % Display
 % figure
@@ -34,8 +34,8 @@ YCBCR=uint8(reshape(temp',[c r d]));
 
 % Y, Cb & CR , Fir Filter
 
-u=[-29 0 88 138 88 0 -29] / 256;    %fir filter for Y
-v=[1 3 3 1] /8;                     %fir filter for CB CR
+u = [-29 0 88 138 88 0 -29] / 256;    %fir filter for Y
+v = [1 3 3 1] /8;                     %fir filter for CB CR
 
 % Y SubSampling
 %--------------

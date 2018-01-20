@@ -93,12 +93,12 @@ y=uint8(best_mBY_forw);
 z=uint8(best_mBY_backw);
 
 
-subplot(3,1,1);
-imshow(x);
-subplot(3,1,2);
-imshow(y);
-subplot(3,1,3);
-imshow(z);
+% subplot(3,1,1);
+% imshow(x);
+% subplot(3,1,2);
+% imshow(y);
+% subplot(3,1,3);
+% imshow(z);
 
 
 end

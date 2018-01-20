@@ -31,15 +31,15 @@ errcr = x(:,:,6);
 switch (mBType)
     case '010'
         [mbY, mbCr, mbCB] = iMotEstP(erry,errcr,errcb ,mBIndex, mv,...
-            buf(1).frameY,buf(1).frameCr,buf(1).frameCb);
+            buf{1}.frameY,buf{1}.frameCr,buf{1}.frameCb);
         
         decMBY = mbY;
         decMBCb = mbCr;
         decMBCr = mbCB;
     case '011'
         [mbY, mbCr, mbCB] = iMotEstB(erry,errcr,errcb,mBIndex, mv,...
-            buf(1).frameY,buf(1).frameCr,buf(1).frameCb,...
-            buf(2).frameY,buf(2).frameCr,buf(2).frameCb);
+            buf{1}.frameY,buf{1}.frameCr,buf{1}.frameCb,...
+            buf{2}.frameY,buf{1}.frameCr,buf{2}.frameCb);
         
         decMBY = mbY;
         decMBCb = mbCr;

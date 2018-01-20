@@ -15,8 +15,8 @@ function [qBlock] = quantizeI(dctBlock, qTable, qScale)
 %      27 29 35 38 46 56 69 83 ];
 %  
  
-
-    qBlock = floor( 8 * dctBlock ./ (qScale * qTable) );
+qBlock = round( 8 * dctBlock ./ (qScale * qTable) );
     qBlock(1,1) = round( dctBlock (1,1)/ 8 );
+
 end
 
