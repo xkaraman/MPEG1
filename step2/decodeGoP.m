@@ -18,7 +18,6 @@ sizeOfoP=length(PicSliceEntityArray);
 
 for picIndex = 1:sizeOfoP
     dPic = decodePicSlice(PicSliceEntityArray(picIndex).MBEntityArray);
-    picType=PicSliceEntityArray(picIndex).PicSliceHeader.picture_coding_type;
     if isempty(dPic)
         return; % No picture found
     end

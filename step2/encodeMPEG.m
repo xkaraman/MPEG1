@@ -15,8 +15,8 @@ vertical = dec2bin(720,12);
 horizontal = dec2bin(584,12);
 
 SeqHeader = struct('sequence_header_code',seq_header,...
-                 'horizontal_size',horizontal,...
-                 'vertical_size',vertical);
+                   'horizontal_size',horizontal,...
+                   'vertical_size',vertical);
 
 GoPEntityArray = encodeSeq(bName, fExtension, startFrame, GoP, numOfGoPs, qScale);
 

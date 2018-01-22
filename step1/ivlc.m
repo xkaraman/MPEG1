@@ -41,12 +41,12 @@ for i=1:(elements-1)
    
    if isempty(D) && isempty(I) % if not found in previous ones, search in d17
        first_part=char(vlcStream{i});
-       first_part=first_part(1:6);
+       first_part=first_part(7:12);
        runSymbols(i,1)=bin2dec(first_part);
        
        
        second_part=char(vlcStream{i});
-       second_part=second_part(7:end);
+       second_part=second_part(13:end);
        second={second_part};
        
        S = find(strcmp(d17b,second));

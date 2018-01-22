@@ -4,7 +4,7 @@ function [dctBlock] = dequantizeI(qBlock, qTable, qScale)
 
 
 dctBlock = qBlock .* (qScale * qTable) / 8;
-dctBlock(1,1)=qBlock(1,1)*8
+dctBlock(1,1)=qBlock(1,1)*8;
 
 end
 

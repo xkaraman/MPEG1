@@ -1,3 +1,4 @@
+rgb=imread('coastguard000.tiff');
 [y,cr,cb]= ccir2ycrcb(rgb);
 
 figure

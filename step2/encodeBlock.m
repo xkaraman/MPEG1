@@ -11,21 +11,21 @@ if isempty(qI)
 end
 
 % DCT coefficients
-C=blockDCT(blockMatrix);
+C = blockDCT(blockMatrix);
 
 % Quantize accordind to Frame/Block Type
 if(mBType == 'I')
-    q=qI;
-    c=quantizeI(C,q,qscale);
+    q = qI;
+    c = quantizeI(C,q,qscale);
 else
-    q=qPB;
-    c=quantizePB(C,q,qscale);
+    q = qPB;
+    c = quantizePB(C,q,qscale);
 end
 
 % Run/Level Zig-Zag Scanning
-symbols=runLength(c);
+symbols = runLength(c);
 % Encode them using Variable Length Code defaults by MPEG1 standard
-BlockEntity.VLCodes=vlc(symbols);
+BlockEntity.VLCodes = vlc(symbols);
 % writeVLC();
 end
 

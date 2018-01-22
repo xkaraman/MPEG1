@@ -27,10 +27,11 @@ for i=1:elements
     end
     
     if isempty( bingo ) % if not in the main tables use d16 & d17
-        first_part = d16b(runSymbols(i,1)+1);
-        S = find(d17a ==runSymbols(i,2));
-        second_part = d17b(S);
-        final = strcat(first_part , second_part);
+        first_part = '000001';
+        second_part = d16b(runSymbols(i,1)+1);
+        S = find(d17a == runSymbols(i,2));
+        third_part = d17b(S);
+        final = strcat(first_part , second_part,third_part);
     end
     
     I(:) = [];    %emptying matrices due to isemptychecks

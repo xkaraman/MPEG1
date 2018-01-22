@@ -11,7 +11,7 @@ function [ MBEntityArray ] = encodePicSlice( pic, picType, qScale )
 
     mb = struct('MBHeader',[],'MotionVectors',[],'BlockEntityArray',[]);
     
-for mbindex = 1:( size(pic.frameY,1) / 16 )* ( size(pic.frameY,2) / 16 )
+for mbindex = 1:( size(pic.frameY,1) / 16 ) * ( size(pic.frameY,2) / 16 )
     mb(mbindex).MBHeader = genMBheader(picType,qScale); 
 %     writeMBheader()
     [mb(mbindex).MotionVectors, mb(mbindex).BlockEntityArray] =  encodeMB(pic,picType,qScale,mbindex-1);

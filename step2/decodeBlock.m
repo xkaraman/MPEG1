@@ -28,8 +28,10 @@ else
     dct = dequantizePB(c, qTable, bin2dec(qScale) );
 end
 
-decBlock = iBlockDCT(dct);
+decBlock = iBlockDCT(dct) ;
 
+% Same effect as above
+% decBlock = uint8( max( min(decBlock,255), 0 ) );
 
 end
 
